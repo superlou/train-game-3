@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbtj4xyb73lu5"]
+
+[sub_resource type="TileSet" id="TileSet_gtv7e"]
+tile_size = Vector2i(64, 64)
+
+[node name="Train" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_gtv7e")
+format = 2
