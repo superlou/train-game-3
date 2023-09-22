@@ -9,15 +9,15 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.45098, 0.309804, 1, 1)
-position = Vector2(348, 177)
+position = Vector2(111, 88)
 texture = ExtResource("2_3u3eq")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 modulate = Color(1, 0.572549, 0.231373, 1)
-position = Vector2(780, 220)
+position = Vector2(481, 82)
 texture = ExtResource("2_3u3eq")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
 modulate = Color(0.235294, 1, 0.247059, 1)
-position = Vector2(428, 467)
+position = Vector2(262, 284)
 texture = ExtResource("2_3u3eq")
