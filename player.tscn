@@ -1,21 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://vgvmwl5vqf6v"]
+[gd_scene load_steps=7 format=3 uid="uid://vgvmwl5vqf6v"]
 
 [ext_resource type="Texture2D" uid="uid://dmpfra1wx0pfe" path="res://assets/robot.png" id="2_4la08"]
 [ext_resource type="Script" path="res://player.gd" id="2_lvuiu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc4mu"]
+atlas = ExtResource("2_4la08")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmbj3"]
+atlas = ExtResource("2_4la08")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaocb"]
+atlas = ExtResource("2_4la08")
+region = Rect2(64, 0, 32, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_usufq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4la08")
+"texture": SubResource("AtlasTexture_tc4mu")
 }],
 "loop": true,
-"name": &"default",
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmbj3")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaocb")
+}],
+"loop": true,
+"name": &"up",
 "speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("2_lvuiu")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_usufq")
+animation = &"up"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

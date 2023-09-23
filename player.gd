@@ -19,3 +19,16 @@ func _physics_process(_delta):
 	var speed = sprint_speed if Input.is_action_pressed("sprint") else walk_speed
 	velocity = v * speed
 	move_and_slide()
+	
+	if v.x > 0:
+		$Sprite.animation = "right"
+		$Sprite.flip_h = false
+	elif v.x < 0:
+		$Sprite.animation = "right"
+		$Sprite.flip_h = true
+	elif v.y > 0:
+		$Sprite.animation = "down"
+		$Sprite.flip_h = false
+	elif v.y < 0:
+		$Sprite.animation = "up"
+		$Sprite.flip_h = false
