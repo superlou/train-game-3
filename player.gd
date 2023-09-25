@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var walk_speed = 200
-@export var sprint_speed = 500
+@export var walk_speed = 100
+@export var sprint_speed = 250
 
 
 # Called when the node enters the scene tree for the first time.

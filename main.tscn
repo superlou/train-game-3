@@ -1,23 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://c3amlqk526e0m"]
 
 [ext_resource type="PackedScene" uid="uid://vgvmwl5vqf6v" path="res://player.tscn" id="1_ikb8b"]
-[ext_resource type="Texture2D" uid="uid://c07oo1pq241k2" path="res://icon.svg" id="2_3u3eq"]
+[ext_resource type="PackedScene" uid="uid://cbtj4xyb73lu5" path="res://train.tscn" id="1_ps2py"]
 
 [node name="Main" type="Node2D"]
 
+[node name="Train" parent="." instance=ExtResource("1_ps2py")]
+
 [node name="Player" parent="." instance=ExtResource("1_ikb8b")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.45098, 0.309804, 1, 1)
-position = Vector2(111, 88)
-texture = ExtResource("2_3u3eq")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(1, 0.572549, 0.231373, 1)
-position = Vector2(481, 82)
-texture = ExtResource("2_3u3eq")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-modulate = Color(0.235294, 1, 0.247059, 1)
-position = Vector2(262, 284)
-texture = ExtResource("2_3u3eq")
