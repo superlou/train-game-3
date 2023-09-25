@@ -49,6 +49,7 @@ size = Vector2(20, 9)
 script = ExtResource("2_lvuiu")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_usufq")
 animation = &"up"
 

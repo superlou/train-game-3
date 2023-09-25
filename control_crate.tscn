@@ -4,12 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://dyvbrn1soaquy" path="res://assets/control_crate_interior.png" id="1_e5icn"]
 [ext_resource type="Script" path="res://control_crate.gd" id="1_miv0v"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7qcx"]
-size = Vector2(80, 112)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eat3"]
-size = Vector2(15.9589, 20)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_raru7"]
 texture = ExtResource("1_e5icn")
 texture_region_size = Vector2i(32, 32)
@@ -73,19 +67,19 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.125, -13, 16, -13.25, 16, 16, -11.125, 16, -11.125, -8.5)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.75, -13, 16, -13, 16, 16, -10.75, 16, -10.75, -8.25)
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -12.75, 16, -12.75, 16, 16, -16, 16)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -13.25, 16, -13.5, 16, 16, -16, 16)
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -13, 7.875, -12.75, 11.125, -8.75, 11.875, 16, -16, 16)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -13.25, 6.5, -13, 11.75, -7.25, 11.25, 16, -16, 16)
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.375, -16, 16, -16, 16, 16, -11.375, 16)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11, -16, 16, -16, 16, 16, -11.375, 16)
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -93,7 +87,7 @@ texture_region_size = Vector2i(32, 32)
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 11.625, -16, 11.625, 16, -16, 16)
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 10.75, -16, 11.25, 16, -16, 16)
 0:2/0 = 0
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_0/angular_velocity = 0.0
@@ -124,33 +118,40 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_lxao7")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7qcx"]
+size = Vector2(172.527, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eat3"]
+size = Vector2(13.9726, 20)
+
 [node name="ControlCrate" type="Node2D"]
 script = ExtResource("1_miv0v")
-
-[node name="SeeInteriorArea" type="Area2D" parent="."]
-
-[node name="Interior" type="CollisionShape2D" parent="SeeInteriorArea"]
-position = Vector2(47, 63)
-scale = Vector2(0.996943, 1)
-shape = SubResource("RectangleShape2D_n7qcx")
-
-[node name="Doorway" type="CollisionShape2D" parent="SeeInteriorArea"]
-position = Vector2(8.03448, 80)
-scale = Vector2(1.0069, 1)
-shape = SubResource("RectangleShape2D_5eat3")
 
 [node name="Interior" type="TileMap" parent="."]
 scale = Vector2(0.979614, 1.00261)
 tile_set = SubResource("TileSet_2f6jt")
 format = 2
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 196608, 0, 3, 1, 65536, 0, 65537, 65536, 1, 131073, 65536, 2, 196609, 65536, 3, 2, 131072, 0, 65538, 131072, 1, 131074, 131072, 2, 196610, 131072, 3)
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 196608, 0, 3, 1, 65536, 0, 65537, 65536, 1, 131073, 65536, 2, 196609, 65536, 3, 4, 65536, 0, 65540, 65536, 1, 131076, 65536, 2, 196612, 65536, 3, 5, 131072, 0, 65541, 131072, 1, 131077, 131072, 2, 196613, 131072, 3, 2, 65536, 0, 65538, 65536, 1, 131074, 65536, 2, 196610, 65536, 3, 3, 65536, 0, 65539, 65536, 1, 131075, 65536, 2, 196611, 65536, 3)
 
 [node name="Exterior" type="TileMap" parent="."]
+y_sort_enabled = true
 scale = Vector2(0.997912, 1)
 tile_set = SubResource("TileSet_buttu")
 format = 2
-layer_0/z_index = 1
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 131072, 0, 65536, 0, 1, 131072, 0, 2, 196608, 0, 3, 65537, 65536, 1, 131073, 65536, 2, 196609, 65536, 3, 65538, 131072, 1, 131074, 131072, 2, 196610, 131072, 3)
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 65536, 0, 1, 131072, 0, 2, 196608, 0, 3, 65537, 65536, 1, 131073, 65536, 2, 196609, 65536, 3, 5, 131072, 0, 65541, 131072, 1, 131077, 131072, 2, 196613, 131072, 3, 2, 65536, 0, 65538, 65536, 1, 131074, 65536, 2, 196610, 65536, 3, 3, 65536, 0, 65539, 65536, 1, 131075, 65536, 2, 196611, 65536, 3, 4, 65536, 0, 65540, 65536, 1, 131076, 65536, 2, 196612, 65536, 3)
+
+[node name="SeeInteriorArea" type="Area2D" parent="."]
+
+[node name="Interior" type="CollisionShape2D" parent="SeeInteriorArea"]
+position = Vector2(94, 87)
+scale = Vector2(0.996943, 1)
+shape = SubResource("RectangleShape2D_n7qcx")
+
+[node name="Doorway" type="CollisionShape2D" parent="SeeInteriorArea"]
+position = Vector2(9.03449, 80)
+scale = Vector2(1.0069, 1)
+shape = SubResource("RectangleShape2D_5eat3")
 
 [connection signal="body_entered" from="SeeInteriorArea" to="." method="_on_see_interior_area_body_entered"]
 [connection signal="body_exited" from="SeeInteriorArea" to="." method="_on_see_interior_area_body_exited"]
