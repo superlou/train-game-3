@@ -1,35 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjpairq1jm40"]
+[gd_scene load_steps=6 format=3 uid="uid://bjpairq1jm40"]
 
 [ext_resource type="Texture2D" uid="uid://d4ik054gim10f" path="res://assets/flatbed.png" id="1_bowwc"]
 [ext_resource type="Texture2D" uid="uid://4l86o8r6n6sj" path="res://assets/train_car_truck.png" id="2_7cvwy"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0chek"]
-texture = ExtResource("2_7cvwy")
-texture_region_size = Vector2i(32, 32)
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-2:4/0 = 0
-1:4/0 = 0
-0:4/0 = 0
-3:0/0 = 0
-3:1/0 = 0
-3:2/0 = 0
-3:3/0 = 0
-3:4/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_fk6qb"]
-tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_0chek")
+[sub_resource type="SpriteFrames" id="SpriteFrames_4l85m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7cvwy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vauko"]
 texture = ExtResource("1_bowwc")
@@ -79,19 +62,13 @@ sources/0 = SubResource("TileSetAtlasSource_vauko")
 
 [node name="Flatbed" type="Node2D"]
 
-[node name="Truck1" type="TileMap" parent="."]
-position = Vector2(84, 129)
-tile_set = SubResource("TileSet_fk6qb")
-cell_quadrant_size = 32
-format = 2
-layer_0/tile_data = PackedInt32Array(-131074, 1, 0, -65538, 1, 1, -2, 1, 2, 65534, 1, 3, 131070, 1, 4, -131073, 65537, 0, -65537, 65537, 1, -1, 65537, 2, 65535, 65537, 3, 131071, 65537, 4, -196608, 131073, 0, -131072, 131073, 1, -65536, 131073, 2, 0, 131073, 3, 65536, 131073, 4, -196607, 196609, 0, -131071, 196609, 1, -65535, 196609, 2, 1, 196609, 3, 65537, 196609, 4)
+[node name="Truck1" type="AnimatedSprite2D" parent="."]
+position = Vector2(83, 107)
+sprite_frames = SubResource("SpriteFrames_4l85m")
 
-[node name="Truck2" type="TileMap" parent="."]
-position = Vector2(588, 129)
-tile_set = SubResource("TileSet_fk6qb")
-cell_quadrant_size = 32
-format = 2
-layer_0/tile_data = PackedInt32Array(-131074, 1, 0, -65538, 1, 1, -2, 1, 2, 65534, 1, 3, 131070, 1, 4, -131073, 65537, 0, -65537, 65537, 1, -1, 65537, 2, 65535, 65537, 3, 131071, 65537, 4, -196608, 131073, 0, -131072, 131073, 1, -65536, 131073, 2, 0, 131073, 3, 65536, 131073, 4, -196607, 196609, 0, -131071, 196609, 1, -65535, 196609, 2, 1, 196609, 3, 65537, 196609, 4)
+[node name="Truck2" type="AnimatedSprite2D" parent="."]
+position = Vector2(592, 107)
+sprite_frames = SubResource("SpriteFrames_4l85m")
 
 [node name="Bed" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_vhyte")
