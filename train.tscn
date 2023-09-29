@@ -32,3 +32,6 @@ position = Vector2(0, 5)
 
 [node name="ControlCrate" parent="Flatbed" instance=ExtResource("2_jdqg1")]
 position = Vector2(107, -28)
+
+[node name="Flatbed2" parent="." instance=ExtResource("1_jx6i6")]
+position = Vector2(-685, 5)

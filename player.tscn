@@ -46,10 +46,13 @@ animations = [{
 size = Vector2(20, 9)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("2_lvuiu")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
+position = Vector2(-1, -14)
 sprite_frames = SubResource("SpriteFrames_usufq")
 animation = &"up"
 
@@ -59,5 +62,5 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 14.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_1g0pm")
