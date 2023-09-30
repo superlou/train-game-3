@@ -21,7 +21,7 @@ func _process(_delta):
 var g = -10
 var jump_t = 0
 var original_z = 0
-var jump_v = 2
+var jump_v = 2.5
 
 func _physics_process(delta):
 	var v = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -37,7 +37,7 @@ func _physics_process(delta):
 	
 	if is_jumping:
 		jump_t += delta
-		$Sprite.position.y -= g * jump_t + jump_v
+		$Sprite.position.y -= round(g * jump_t + jump_v)
 
 		if $Sprite.position.y >= original_z:
 			$Sprite.position.y = original_z
