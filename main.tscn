@@ -10,6 +10,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 outlines = Array[PackedVector2Array]([PackedVector2Array(7, 9, 102, 8, 105, 108, 301, 108, 301, 9, 507, 10, 509, 129, 7, 128)])
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_vgtnh")
