@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3amlqk526e0m"]
+[gd_scene load_steps=5 format=3 uid="uid://c3amlqk526e0m"]
 
 [ext_resource type="PackedScene" uid="uid://vgvmwl5vqf6v" path="res://player.tscn" id="1_ikb8b"]
 [ext_resource type="PackedScene" uid="uid://cbtj4xyb73lu5" path="res://train.tscn" id="1_ps2py"]
+[ext_resource type="PackedScene" uid="uid://ckil20uyxnrk0" path="res://passenger.tscn" id="3_0wtjn"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vgtnh"]
+vertices = PackedVector2Array(301, 108, 301, 9, 507, 10, 509, 129, 7, 128, 105, 108, 7, 9, 102, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(7, 9, 102, 8, 105, 108, 301, 108, 301, 9, 507, 10, 509, 129, 7, 128)])
 
 [node name="Main" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_vgtnh")
 
 [node name="Train" parent="." instance=ExtResource("1_ps2py")]
 position = Vector2(1, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_ikb8b")]
 position = Vector2(43, 34)
+
+[node name="Passenger" parent="." instance=ExtResource("3_0wtjn")]
+position = Vector2(78, 32)
