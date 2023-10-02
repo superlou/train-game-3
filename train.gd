@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var velocity = 500
+@export var velocity = 500
 
 
 # Called when the node enters the scene tree for the first time.
