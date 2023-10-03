@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbtj4xyb73lu5"]
+[gd_scene load_steps=9 format=3 uid="uid://cbtj4xyb73lu5"]
 
 [ext_resource type="Script" path="res://train.gd" id="1_hyvyr"]
 [ext_resource type="PackedScene" uid="uid://bjpairq1jm40" path="res://flatbed.tscn" id="1_jx6i6"]
 [ext_resource type="Texture2D" uid="uid://c3ecyosp057ah" path="res://assets/track.png" id="1_mjoa8"]
 [ext_resource type="PackedScene" uid="uid://bgog2gx5xn6bx" path="res://control_crate.tscn" id="2_jdqg1"]
+[ext_resource type="PackedScene" uid="uid://c4fdy1ms2aya8" path="res://ramp.tscn" id="5_lrgh5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e77y4"]
 texture = ExtResource("1_mjoa8")
@@ -42,5 +43,9 @@ position = Vector2(446, -22)
 [node name="Flatbed2" parent="." instance=ExtResource("1_jx6i6")]
 position = Vector2(-685, 5)
 
+[node name="Ramp" parent="." instance=ExtResource("5_lrgh5")]
+position = Vector2(256, 5)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_6jem5")

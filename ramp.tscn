@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4fdy1ms2aya8"]
+
+[ext_resource type="Texture2D" uid="uid://d4ik054gim10f" path="res://assets/flatbed.png" id="1_aeemv"]
+[ext_resource type="Texture2D" uid="uid://dspqj860x85r" path="res://assets/ramp.png" id="2_i84fj"]
+
+[sub_resource type="Animation" id="Animation_iiqiq"]
+resource_name = "DeployRamp"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Ramp:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Ramp:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(61, -0.25, 0, 2.8, -1, -41, -1.4, 2, 0.25, 0),
+"times": PackedFloat32Array(0, 5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kwkr7"]
+_data = {
+"DeployRamp": SubResource("Animation_iiqiq")
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vauko"]
+texture = ExtResource("1_aeemv")
+texture_region_size = Vector2i(32, 32)
+4:1/0 = 0
+0:2/next_alternative_id = 2
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+0:3/next_alternative_id = 3
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/next_alternative_id = 2
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/next_alternative_id = 2
+3:4/0 = 0
+4:4/0 = 0
+0:1/next_alternative_id = 4
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+2:0/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+7:2/0 = 0
+6:2/0 = 0
+5:2/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+7:4/0 = 0
+6:4/0 = 0
+5:4/0 = 0
+9:1/0 = 0
+9:2/0 = 0
+9:3/0 = 0
+10:1/0 = 0
+10:2/0 = 0
+10:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r5did"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_vauko")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bofr7"]
+atlas = ExtResource("2_i84fj")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ilfmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bofr7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Ramp" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../BedRails")
+libraries = {
+"": SubResource("AnimationLibrary_kwkr7")
+}
+
+[node name="BedRails" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_r5did")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 589824, 1, 65536, 589824, 2, 196608, 589824, 3, 131072, 589824, 2, 1, 655360, 1, 65537, 655360, 2, 131073, 655360, 2, 196609, 655360, 3)
+
+[node name="Ramp" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 61)
+sprite_frames = SubResource("SpriteFrames_ilfmr")
