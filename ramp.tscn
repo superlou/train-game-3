@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4fdy1ms2aya8"]
+[gd_scene load_steps=12 format=3 uid="uid://c4fdy1ms2aya8"]
 
 [ext_resource type="Texture2D" uid="uid://d4ik054gim10f" path="res://assets/flatbed.png" id="1_aeemv"]
+[ext_resource type="Script" path="res://ramp.gd" id="1_ttaqf"]
 [ext_resource type="Texture2D" uid="uid://dspqj860x85r" path="res://assets/ramp.png" id="2_i84fj"]
 
 [sub_resource type="Animation" id="Animation_iiqiq"]
@@ -27,6 +28,30 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(61, -0.25, 0, 2.8, -1, -41, -1.4, 2, 0.25, 0),
 "times": PackedFloat32Array(0, 5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Ramp:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"up", &"down"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kwkr7"]
@@ -86,6 +111,13 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_vauko")
 
+[sub_resource type="Gradient" id="Gradient_3dodd"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6phja"]
+atlas = ExtResource("2_i84fj")
+region = Rect2(64, 0, 64, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bofr7"]
 atlas = ExtResource("2_i84fj")
 region = Rect2(0, 0, 64, 128)
@@ -94,14 +126,23 @@ region = Rect2(0, 0, 64, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6phja")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bofr7")
 }],
 "loop": true,
-"name": &"default",
+"name": &"up",
 "speed": 5.0
 }]
 
 [node name="Ramp" type="Node2D"]
+script = ExtResource("1_ttaqf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../BedRails")
@@ -115,6 +156,26 @@ tile_set = SubResource("TileSet_r5did")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 589824, 1, 65536, 589824, 2, 196608, 589824, 3, 131072, 589824, 2, 1, 655360, 1, 65537, 655360, 2, 131073, 655360, 2, 196609, 655360, 3)
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(32, -80)
+emitting = false
+amount = 64
+one_shot = true
+explosiveness = 1.0
+randomness = 0.67
+emission_shape = 3
+emission_rect_extents = Vector2(30, 1)
+direction = Vector2(0, -1)
+spread = 136.19
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 50.0
+damping_min = 50.0
+damping_max = 50.0
+color = Color(0.894118, 0.647059, 0.368627, 1)
+color_ramp = SubResource("Gradient_3dodd")
+
 [node name="Ramp" type="AnimatedSprite2D" parent="."]
 position = Vector2(32, 61)
 sprite_frames = SubResource("SpriteFrames_ilfmr")
+animation = &"up"

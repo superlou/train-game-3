@@ -70,10 +70,12 @@ size = Vector2(5, 127.75)
 [node name="Flatbed" type="Node2D"]
 
 [node name="Truck1" type="AnimatedSprite2D" parent="."]
+z_index = -1
 position = Vector2(83, 107)
 sprite_frames = SubResource("SpriteFrames_4l85m")
 
 [node name="Truck2" type="AnimatedSprite2D" parent="."]
+z_index = -1
 position = Vector2(592, 107)
 sprite_frames = SubResource("SpriteFrames_4l85m")
 

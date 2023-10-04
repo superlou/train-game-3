@@ -31,7 +31,7 @@ func _physics_process(delta):
 		if %Train.velocity < 1:
 			travel_state = TravelType.AT_STATION
 			%Train.velocity = 0
-			$Train/Ramp/AnimationPlayer.play("DeployRamp")
+			$Train/Flatbed/Ramp.deploy()
 
 	if station:
 		station.position.x -= %Train.velocity * delta

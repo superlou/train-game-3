@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk47ml0jysec7"]
+
+[ext_resource type="Texture2D" uid="uid://ddfudfqswtdf4" path="res://assets/items.png" id="1_c7aou"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v1ja"]
+atlas = ExtResource("1_c7aou")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wofy1"]
+radius = 6.0
+height = 26.0
+
+[node name="Drum" type="RigidBody2D"]
+y_sort_enabled = true
+position = Vector2(0, -9)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = SubResource("AtlasTexture_1v1ja")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wofy1")
