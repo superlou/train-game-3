@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vgvmwl5vqf6v"]
+[gd_scene load_steps=11 format=3 uid="uid://vgvmwl5vqf6v"]
 
 [ext_resource type="Texture2D" uid="uid://dmpfra1wx0pfe" path="res://assets/robot.png" id="2_4la08"]
 [ext_resource type="Script" path="res://player.gd" id="2_lvuiu"]
@@ -43,7 +43,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g0pm"]
-size = Vector2(20, 9)
+size = Vector2(19, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_01sxn"]
+size = Vector2(20, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quwv2"]
+size = Vector2(20, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3moc3"]
+size = Vector2(19, 33.125)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -54,9 +63,9 @@ script = ExtResource("2_lvuiu")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-1, -9)
+position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_usufq")
-animation = &"up"
+animation = &"right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, 5)
@@ -65,5 +74,43 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.5)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_1g0pm")
+
+[node name="InteractDown" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractDown"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_01sxn")
+
+[node name="InteractRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRight"]
+position = Vector2(20, -2)
+shape = SubResource("RectangleShape2D_quwv2")
+
+[node name="InteractLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractLeft"]
+position = Vector2(-19, -2)
+shape = SubResource("RectangleShape2D_quwv2")
+
+[node name="InteractUp" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractUp"]
+position = Vector2(0.5, -15.5625)
+shape = SubResource("RectangleShape2D_3moc3")
+
+[node name="HoldMarkers" type="Node" parent="."]
+
+[node name="HoldDown" type="Marker2D" parent="HoldMarkers"]
+position = Vector2(1, 13)
+
+[node name="HoldRight" type="Marker2D" parent="HoldMarkers"]
+position = Vector2(18, -10)
+
+[node name="HoldLeft" type="Marker2D" parent="HoldMarkers"]
+position = Vector2(-20, -11)
+
+[node name="HoldUp" type="Marker2D" parent="HoldMarkers"]
+position = Vector2(0, -17)

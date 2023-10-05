@@ -13,3 +13,4 @@
 
 [ ] Have a robust way to know if the player is on a train car or not.
     This should maybe move the player into the scene of the car that they are in. That would let the train turn while keeping the camera straight for the player in the current car.
+    Just use directional collisions shapes?

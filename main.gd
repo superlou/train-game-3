@@ -28,10 +28,12 @@ func _physics_process(delta):
 
 	if travel_state == TravelType.APPROACHING_STATION:
 		%Train.velocity = min(0.5 * (station.position.x - 200), %Train.velocity)
+		station.freeze_bodies()
 		if %Train.velocity < 1:
 			travel_state = TravelType.AT_STATION
 			%Train.velocity = 0
 			$Train/Flatbed/Ramp.deploy()
+			station.unfreeze_bodies()
 
 	if station:
 		station.position.x -= %Train.velocity * delta

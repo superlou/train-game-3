@@ -10,7 +10,7 @@ region = Rect2(0, 0, 32, 32)
 radius = 6.0
 height = 26.0
 
-[node name="Drum" type="RigidBody2D"]
+[node name="Drum" type="RigidBody2D" groups=["grabbable"]]
 y_sort_enabled = true
 position = Vector2(0, -9)
 

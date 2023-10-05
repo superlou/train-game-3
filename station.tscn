@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjl8ho1215tla"]
+[gd_scene load_steps=4 format=3 uid="uid://cjl8ho1215tla"]
 
 [ext_resource type="Texture2D" uid="uid://c07oo1pq241k2" path="res://icon.svg" id="1_mr7v3"]
+[ext_resource type="Script" path="res://station.gd" id="1_vb84l"]
+[ext_resource type="PackedScene" uid="uid://bk47ml0jysec7" path="res://drum.tscn" id="2_ibp8l"]
 
 [node name="Station" type="Node2D"]
+script = ExtResource("1_vb84l")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(1, -2)
 texture = ExtResource("1_mr7v3")
+
+[node name="Drum" parent="." instance=ExtResource("2_ibp8l")]
+z_index = 1
