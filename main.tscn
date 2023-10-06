@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3amlqk526e0m"]
+[gd_scene load_steps=6 format=3 uid="uid://c3amlqk526e0m"]
 
 [ext_resource type="PackedScene" uid="uid://vgvmwl5vqf6v" path="res://player.tscn" id="1_ikb8b"]
 [ext_resource type="Script" path="res://main.gd" id="1_pr4bk"]
 [ext_resource type="PackedScene" uid="uid://cbtj4xyb73lu5" path="res://train.tscn" id="1_ps2py"]
 [ext_resource type="PackedScene" uid="uid://ckil20uyxnrk0" path="res://passenger.tscn" id="3_0wtjn"]
+[ext_resource type="PackedScene" uid="uid://bk47ml0jysec7" path="res://drum.tscn" id="5_xe430"]
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -20,3 +21,7 @@ position = Vector2(43, 34)
 [node name="Passenger" parent="." instance=ExtResource("3_0wtjn")]
 z_index = 1
 position = Vector2(78, 32)
+
+[node name="Drum" parent="." instance=ExtResource("5_xe430")]
+z_index = 1
+position = Vector2(115, 73)

@@ -73,17 +73,26 @@ func _physics_process(delta):
 	move_and_slide()
 
 	if Input.is_action_just_pressed("interact"):
-		var interact_area = current_interact_area()
-		var bodies = interact_area.get_overlapping_bodies()
-		for body in bodies:
-			if body.name == "Player":
-				continue
-			
-			interact_with(body)
-			break
+		interact()
 
 	if held_item:
 		held_item.position = current_hold_marker().position
+
+
+func interact():
+	if held_item:
+		drop_held_item()
+		return
+
+	var interact_area = current_interact_area()
+	var bodies = interact_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.name == "Player":
+			continue
+		
+		interact_with(body)
+		break
+
 
 func interact_with(item):
 	if item.is_in_group("grabbable"):
@@ -95,6 +104,14 @@ func pick_up(item):
 	item.get_parent().remove_child(item)
 	item.position = Vector2.ZERO
 	add_child(item)
+
+
+func drop_held_item():
+	remove_child(held_item)
+	held_item.global_position = global_position + current_hold_marker().position
+	get_parent().add_child(held_item)
+	held_item.rotation = 0	
+	held_item = null
 
 
 func current_interact_area():
