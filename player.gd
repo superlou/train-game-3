@@ -108,7 +108,7 @@ func pick_up(item):
 
 func drop_held_item():
 	remove_child(held_item)
-	held_item.global_position = global_position + current_hold_marker().position
+	held_item.global_position = current_hold_marker().global_position
 	get_parent().add_child(held_item)
 	held_item.rotation = 0	
 	held_item = null

@@ -101,7 +101,7 @@ shape = SubResource("RectangleShape2D_quwv2")
 position = Vector2(0.5, -15.5625)
 shape = SubResource("RectangleShape2D_3moc3")
 
-[node name="HoldMarkers" type="Node" parent="."]
+[node name="HoldMarkers" type="Node2D" parent="."]
 
 [node name="HoldDown" type="Marker2D" parent="HoldMarkers"]
 position = Vector2(1, 13)
