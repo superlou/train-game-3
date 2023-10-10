@@ -58,7 +58,7 @@ size = Vector2(19, 33.125)
 y_sort_enabled = true
 position = Vector2(0, -6)
 collision_layer = 3
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("2_lvuiu")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

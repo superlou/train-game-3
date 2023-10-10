@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4fdy1ms2aya8"]
+[gd_scene load_steps=13 format=3 uid="uid://c4fdy1ms2aya8"]
 
 [ext_resource type="Texture2D" uid="uid://d4ik054gim10f" path="res://assets/flatbed.png" id="1_aeemv"]
 [ext_resource type="Script" path="res://ramp.gd" id="1_ttaqf"]
@@ -52,6 +52,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_deployed"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kwkr7"]
@@ -141,6 +155,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3j0hw"]
+size = Vector2(46, 42)
+
 [node name="Ramp" type="Node2D"]
 script = ExtResource("1_ttaqf")
 
@@ -179,3 +196,12 @@ color_ramp = SubResource("Gradient_3dodd")
 position = Vector2(32, 61)
 sprite_frames = SubResource("SpriteFrames_ilfmr")
 animation = &"up"
+
+[node name="Traverse" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Traverse"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_3j0hw")
+
+[connection signal="body_entered" from="Traverse" to="." method="_on_traverse_body_entered"]
+[connection signal="body_exited" from="Traverse" to="." method="_on_traverse_body_exited"]
