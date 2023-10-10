@@ -64,6 +64,14 @@ interact={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Not jumpable on the train"
+2d_physics/layer_2="Jumpable on the train"
+2d_physics/layer_3="Train car one-way edge"
+2d_physics/layer_4="Player"
+2d_physics/layer_5="Items"
+
 [physics]
 
 2d/default_gravity_vector=Vector2(0, 0)

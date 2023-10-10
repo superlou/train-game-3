@@ -3,6 +3,8 @@
 1 - Not jumpable on the train
 2 - Jumpable on the train
 3 - Train car one-way edge (can jump out but not in)
+4 - Player
+5 - Items
 
 # Z-Index
 
