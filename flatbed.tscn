@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjpairq1jm40"]
+[gd_scene load_steps=11 format=3 uid="uid://bjpairq1jm40"]
 
 [ext_resource type="Texture2D" uid="uid://d4ik054gim10f" path="res://assets/flatbed.png" id="1_bowwc"]
+[ext_resource type="Script" path="res://flatbed.gd" id="1_o2xxo"]
 [ext_resource type="Texture2D" uid="uid://4l86o8r6n6sj" path="res://assets/train_car_truck.png" id="2_7cvwy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4l85m"]
@@ -70,7 +71,11 @@ size = Vector2(5, 127.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u2vx"]
 size = Vector2(680, 40.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgukr"]
+size = Vector2(669, 119)
+
 [node name="Flatbed" type="Node2D"]
+script = ExtResource("1_o2xxo")
 
 [node name="Truck1" type="AnimatedSprite2D" parent="."]
 z_index = -1
@@ -122,3 +127,15 @@ position = Vector2(336, 147.75)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_1u2vx")
 one_way_collision = true
+
+[node name="BedArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 24
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BedArea"]
+position = Vector2(336.5, 66.5)
+shape = SubResource("RectangleShape2D_dgukr")
+debug_color = Color(0.537255, 0.552941, 0.372549, 0.419608)
+
+[connection signal="body_entered" from="BedArea" to="." method="_on_bed_area_body_entered"]
+[connection signal="body_exited" from="BedArea" to="." method="_on_bed_area_body_exited"]
