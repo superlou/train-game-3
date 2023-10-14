@@ -40,6 +40,7 @@ func _physics_process(delta):
 		jump_t = 0
 		original_z = $Sprite.position.y
 		disable_low_collisions()
+#		set_collision_layer_value(6, false)
 		velocity = v * speed
 	
 	if is_jumping:
@@ -50,6 +51,7 @@ func _physics_process(delta):
 			$Sprite.position.y = original_z
 			is_jumping = false
 			enable_low_collisions()
+#			set_collision_layer_value(6, false)
 	else:	
 		if v.x > 0:
 			facing = Facing.RIGHT
@@ -101,15 +103,19 @@ func interact_with(item):
 
 func pick_up(item):
 	held_item = item
+	item.set_collision_layer_value(6, false)
 	item.get_parent().remove_child(item)
 	item.position = Vector2.ZERO
 	add_child(item)
 
 
 func drop_held_item():
+#	held_item.global_position = current_hold_marker().global_position
+	var pos = held_item.global_position
 	remove_child(held_item)
-	held_item.global_position = current_hold_marker().global_position
 	get_parent().add_child(held_item)
+	held_item.global_position = pos
+	held_item.set_collision_layer_value(6, true)
 	held_item.rotation = 0	
 	held_item = null
 

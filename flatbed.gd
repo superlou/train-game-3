@@ -20,3 +20,7 @@ func _on_bed_area_body_entered(body:Node2D):
 
 func _on_bed_area_body_exited(body:Node2D):
 	body_exited.emit(body)
+
+
+func contains(body:Node2D):
+	return $BedArea.overlaps_body(body)

@@ -42,31 +42,34 @@ layer_0/tile_data = PackedInt32Array(327679, 0, 1, 393215, 0, 2, 327680, 65536, 
 unique_name_in_owner = true
 y_sort_enabled = true
 
-[node name="Flatbed" parent="Cars" instance=ExtResource("1_jx6i6")]
+[node name="Flatbed1" parent="Cars" instance=ExtResource("1_jx6i6")]
 y_sort_enabled = true
 position = Vector2(0, 5)
 
-[node name="Ramp" parent="Cars/Flatbed" instance=ExtResource("5_lrgh5")]
+[node name="Ramp" parent="Cars/Flatbed1" instance=ExtResource("5_lrgh5")]
 position = Vector2(256, 0)
 
-[node name="ControlCrate" parent="Cars/Flatbed" instance=ExtResource("2_jdqg1")]
+[node name="ControlCrate" parent="Cars/Flatbed1" instance=ExtResource("2_jdqg1")]
 z_index = 1
 position = Vector2(446, -22)
 
-[node name="Player" parent="Cars/Flatbed" instance=ExtResource("6_egil1")]
+[node name="Player" parent="Cars/Flatbed1" instance=ExtResource("6_egil1")]
 z_index = 1
 position = Vector2(43, 34)
 
-[node name="Passenger" parent="Cars/Flatbed" instance=ExtResource("7_k1d1o")]
+[node name="Passenger" parent="Cars/Flatbed1" instance=ExtResource("7_k1d1o")]
 z_index = 1
 position = Vector2(78, 32)
 
-[node name="Drum" parent="Cars/Flatbed" instance=ExtResource("8_l3x3k")]
+[node name="Drum" parent="Cars/Flatbed1" instance=ExtResource("8_l3x3k")]
 z_index = 1
 position = Vector2(115, 73)
 
 [node name="Flatbed2" parent="Cars" instance=ExtResource("1_jx6i6")]
 position = Vector2(-685, 5)
+
+[node name="Ground" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
