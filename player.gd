@@ -40,7 +40,7 @@ func _physics_process(delta):
 		jump_t = 0
 		original_z = $Sprite.position.y
 		disable_low_collisions()
-#		set_collision_layer_value(6, false)
+		set_collision_layer_value(6, false)
 		velocity = v * speed
 	
 	if is_jumping:
@@ -51,7 +51,7 @@ func _physics_process(delta):
 			$Sprite.position.y = original_z
 			is_jumping = false
 			enable_low_collisions()
-#			set_collision_layer_value(6, false)
+			set_collision_layer_value(6, true)
 	else:	
 		if v.x > 0:
 			facing = Facing.RIGHT

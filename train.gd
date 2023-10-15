@@ -43,8 +43,7 @@ func _handle_reparenting():
 				new_parent.add_child(body)
 				body.global_position = prev_pos
 		elif len(containing_cars) == 0:
-			# Leaving the train. Don't track anymore
-			pass
+			pass # Probably leaving the train. Don't track anymore
 		else:
 			remaining_watches.append(body)
 
@@ -52,26 +51,28 @@ func _handle_reparenting():
 
 
 func _handle_leaving_train():
+	var remaining_watches = []
+
 	for body in leaving_train_watches:
 		var containing_cars = %Cars.get_children().filter(func(car): return car.contains(body))
 		
-		if len(containing_cars) == 0:
+		if len(containing_cars) == 0 and body.get_collision_layer_value(6):
 			var prev_pos = body.global_position
 			body.get_parent().remove_child(body)
 			%Ground.add_child(body)
 			body.global_position = prev_pos			
+		else:
+			remaining_watches.append(body)
 
-	leaving_train_watches = []
+	leaving_train_watches = remaining_watches
 
 
 func _on_body_entered(body, car):
-	print("enter: ", body, car)
-
+	# print("enter: ", body, car)
 	if body.get_parent() != car and body not in reparenting_watches:
 		reparenting_watches.append(body)
-#		body.get_parent().remove_child(body)
-#		car.add_child(body)
 
-func _on_body_exited(body, car):
-	print("exit: ", body, car)
+
+func _on_body_exited(body, _car):
+	# print("exit: ", body, car)
 	leaving_train_watches.append(body)
