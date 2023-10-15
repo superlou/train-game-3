@@ -54,6 +54,7 @@ z_index = 1
 position = Vector2(446, -22)
 
 [node name="Player" parent="Cars/Flatbed1" instance=ExtResource("6_egil1")]
+unique_name_in_owner = true
 z_index = 1
 position = Vector2(43, 34)
 
@@ -74,3 +75,12 @@ unique_name_in_owner = true
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_6jem5")
+
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 5)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[connection signal="moved" from="Cars/Flatbed1/Player" to="." method="_on_player_moved"]

@@ -67,11 +67,6 @@ position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_usufq")
 animation = &"right"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 5)
-zoom = Vector2(4, 4)
-position_smoothing_speed = 10.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_1g0pm")

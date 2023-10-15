@@ -76,3 +76,9 @@ func _on_body_entered(body, car):
 func _on_body_exited(body, _car):
 	# print("exit: ", body, car)
 	leaving_train_watches.append(body)
+
+
+func _on_player_moved(player_global_pos: Vector2):
+	# Using a signal from the player is a hack for
+	# https://github.com/godotengine/godot/issues/81480
+	%Camera.global_position = player_global_pos
