@@ -106,13 +106,13 @@ shape = SubResource("RectangleShape2D_3moc3")
 [node name="HoldMarkers" type="Node2D" parent="."]
 
 [node name="HoldDown" type="Marker2D" parent="HoldMarkers"]
-position = Vector2(1, 13)
+position = Vector2(0, 13)
 
 [node name="HoldRight" type="Marker2D" parent="HoldMarkers"]
-position = Vector2(18, -10)
+position = Vector2(20, -10)
 
 [node name="HoldLeft" type="Marker2D" parent="HoldMarkers"]
-position = Vector2(-20, -11)
+position = Vector2(-19, -11)
 
 [node name="HoldUp" type="Marker2D" parent="HoldMarkers"]
 position = Vector2(0, -17)

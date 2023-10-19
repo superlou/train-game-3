@@ -47,7 +47,9 @@ func _physics_process(delta):
 	
 	if is_jumping:
 		jump_t += delta
-		$Sprite.position.y -= round(g * jump_t + jump_v)
+		var jump_offset = round(g * jump_t + jump_v)
+		$Sprite.position.y -= jump_offset
+		$HoldMarkers.position.y -= jump_offset
 
 		if $Sprite.position.y >= original_z:
 			$Sprite.position.y = original_z
@@ -80,7 +82,7 @@ func _physics_process(delta):
 		interact()
 
 	if held_item:
-		held_item.position = current_hold_marker().position
+		held_item.global_position = current_hold_marker().global_position
 
 	emit_signal("moved", global_position)
 
@@ -108,9 +110,7 @@ func interact_with(item):
 func pick_up(item):
 	held_item = item
 	item.set_collision_layer_value(6, false)
-	item.get_parent().remove_child(item)
-	item.position = Vector2.ZERO
-	add_child(item)
+	item.reparent(self)
 
 
 func drop_held_item():
