@@ -4,13 +4,18 @@ extends Node2D
 @export var velocity = 500
 var reparenting_watches = []
 var leaving_train_watches = []
-
+@export var player: Node2D = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player = %Player
 	for car in %Cars.get_children():
 		car.connect("body_entered", func(b): _on_body_entered(b, car))
 		car.connect("body_exited", func(b): _on_body_exited(b, car))
+
+
+func _process(_delta):
+	%Camera.global_position = player.global_position
 
 
 func _physics_process(delta):
@@ -24,6 +29,10 @@ func _physics_process(delta):
 	
 	for child in %Ground.get_children():
 		child.position.x -= velocity * delta
+
+	var dist_from_broadcast := player.global_position.distance_to(%Broadcast.global_position)
+	if dist_from_broadcast > 1000:
+		respawn()
 
 
 func _handle_reparenting():
@@ -72,7 +81,5 @@ func _on_body_exited(body, _car):
 	leaving_train_watches.append(body)
 
 
-func _on_player_moved(player_global_pos: Vector2):
-	# Using a signal from the player is a hack for
-	# https://github.com/godotengine/godot/issues/81480
-	%Camera.global_position = player_global_pos
+func respawn():
+	player.global_position = %Respawn.global_position

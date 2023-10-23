@@ -28,9 +28,10 @@ vertices = PackedVector2Array(8, 13, 441, 13, 442, 124, 5, 126)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(8, 13, 441, 13, 442, 124, 5, 126)])
 
-[node name="Train" type="Node2D"]
+[node name="Train" type="Node2D" node_paths=PackedStringArray("player")]
 y_sort_enabled = true
 script = ExtResource("1_hyvyr")
+player = NodePath("Cars/Flatbed1/Player")
 
 [node name="Track" type="TileMap" parent="."]
 z_index = -1
@@ -83,4 +84,10 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[connection signal="moved" from="Cars/Flatbed1/Player" to="." method="_on_player_moved"]
+[node name="Respawn" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(539, 62)
+
+[node name="Broadcast" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(475, 59)

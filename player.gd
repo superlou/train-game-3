@@ -8,8 +8,6 @@ var is_jumping:bool = false
 var jump_vec:Vector2 = Vector2.ZERO
 var held_item = null
 
-signal moved
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -83,8 +81,6 @@ func _physics_process(delta):
 
 	if held_item:
 		held_item.global_position = current_hold_marker().global_position
-
-	emit_signal("moved", global_position)
 
 
 func interact():
