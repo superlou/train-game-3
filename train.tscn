@@ -84,6 +84,14 @@ zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
+[node name="Curtain" type="ColorRect" parent="Camera"]
+z_index = 10
+offset_left = -219.0
+offset_top = -133.0
+offset_right = 213.0
+offset_bottom = 130.0
+color = Color(0, 0, 0, 0)
+
 [node name="Respawn" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(539, 62)

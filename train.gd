@@ -31,7 +31,7 @@ func _physics_process(delta):
 		child.position.x -= velocity * delta
 
 	var dist_from_broadcast := player.global_position.distance_to(%Broadcast.global_position)
-	if dist_from_broadcast > 1000:
+	if dist_from_broadcast > 1500:
 		respawn()
 
 
@@ -82,4 +82,11 @@ func _on_body_exited(body, _car):
 
 
 func respawn():
-	player.global_position = %Respawn.global_position
+	var tween = get_tree().create_tween()
+	%Camera.position_smoothing_enabled = false
+	tween.tween_property(%Camera/Curtain, "color", Color(0, 0, 0, 1), 0.5)
+	tween.tween_interval(1)
+	tween.tween_callback(func(): player.global_position = %Respawn.global_position)
+	tween.tween_interval(1)
+	tween.tween_property(%Camera/Curtain, "color", Color(0, 0, 0, 0), 0.5)
+	tween.tween_callback(func(): %Camera.position_smoothing_enabled = true)

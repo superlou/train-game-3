@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3amlqk526e0m"]
+[gd_scene load_steps=2 format=3 uid="uid://d4dhqxrm2x13f"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_pr4bk"]
-[ext_resource type="PackedScene" uid="uid://cbtj4xyb73lu5" path="res://train.tscn" id="1_ps2py"]
+[ext_resource type="PackedScene" uid="uid://c3amlqk526e0m" path="res://world.tscn" id="1_cwnwe"]
 
-[node name="Main" type="Node2D"]
-y_sort_enabled = true
-script = ExtResource("1_pr4bk")
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Train" parent="." instance=ExtResource("1_ps2py")]
-unique_name_in_owner = true
-position = Vector2(1, 0)
+[node name="World" parent="." instance=ExtResource("1_cwnwe")]
