@@ -102,13 +102,13 @@ func _handle_leaving_train():
 	leaving_train_watches = remaining_watches
 
 
-func _on_body_entered(body, car):
+func _on_body_entered(body, platform):
 	# print("enter: ", body, car)
-	if body.get_parent() != car and body not in reparenting_watches:
+	if body.get_parent() != platform and body not in reparenting_watches:
 		reparenting_watches.append(body)
 
 
-func _on_body_exited(body, _car):
+func _on_body_exited(body, _platform):
 	# print("exit: ", body, car)
 	leaving_train_watches.append(body)
 

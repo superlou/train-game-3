@@ -33,6 +33,22 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(8, 13, 441, 13, 442, 12
 y_sort_enabled = true
 script = ExtResource("1_x1ds3")
 
+[node name="Camera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, 5)
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="Curtain" type="ColorRect" parent="Camera"]
+z_index = 10
+offset_left = -219.0
+offset_top = -133.0
+offset_right = 213.0
+offset_bottom = 130.0
+color = Color(0, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
 [node name="Train" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(1, 0)
@@ -78,22 +94,6 @@ position = Vector2(-685, 5)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Train"]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_rlh5r")
-
-[node name="Camera" type="Camera2D" parent="Train"]
-unique_name_in_owner = true
-position = Vector2(0, 5)
-zoom = Vector2(4, 4)
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-
-[node name="Curtain" type="ColorRect" parent="Train/Camera"]
-z_index = 10
-offset_left = -219.0
-offset_top = -133.0
-offset_right = 213.0
-offset_bottom = 130.0
-color = Color(0, 0, 0, 0)
-metadata/_edit_use_anchors_ = true
 
 [node name="Respawn" type="Marker2D" parent="Train"]
 unique_name_in_owner = true
