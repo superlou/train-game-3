@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjl8ho1215tla"]
+[gd_scene load_steps=5 format=3 uid="uid://cjl8ho1215tla"]
 
 [ext_resource type="Texture2D" uid="uid://c07oo1pq241k2" path="res://icon.svg" id="1_mr7v3"]
 [ext_resource type="Script" path="res://station.gd" id="1_vb84l"]
 [ext_resource type="PackedScene" uid="uid://bk47ml0jysec7" path="res://drum.tscn" id="2_ibp8l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oy0ip"]
+size = Vector2(1154.29, 139.479)
 
 [node name="Station" type="Node2D"]
 script = ExtResource("1_vb84l")
@@ -13,3 +16,13 @@ texture = ExtResource("1_mr7v3")
 
 [node name="Drum" parent="." instance=ExtResource("2_ibp8l")]
 z_index = 1
+
+[node name="PlatformArea" type="Area2D" parent="."]
+scale = Vector2(0.641089, 1.68484)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformArea"]
+position = Vector2(29.637, -27.0056)
+shape = SubResource("RectangleShape2D_oy0ip")
+debug_color = Color(0.537255, 0.552941, 0.372549, 0.419608)

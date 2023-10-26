@@ -21,8 +21,8 @@ func _ready():
 	player = %Player
 
 	for car in %Cars.get_children():
-		car.connect("body_entered", func(b): _on_body_entered(b, car))
-		car.connect("body_exited", func(b): _on_body_exited(b, car))
+		car.connect("platform_entered", func(b): _on_body_entered(b, car))
+		car.connect("platform_exited", func(b): _on_body_exited(b, car))
 
 
 func _process(_delta):
@@ -35,6 +35,9 @@ func _physics_process(delta):
 		station.position = Vector2(2000, -50)
 		add_child(station)
 		travel_state = TravelType.APPROACHING_STATION
+
+		station.connect("platform_entered", func(b): _on_body_entered(b, station))
+		station.connect("platform_exited", func(b): _on_body_exited(b, station))
 
 	if travel_state == TravelType.APPROACHING_STATION:
 		%Train.velocity = min(0.5 * (station.position.x - 200), %Train.velocity)
@@ -59,17 +62,25 @@ func _physics_process(delta):
 		respawn()
 
 
+func _containing_platforms(body):
+	var platforms = %Cars.get_children().filter(func(car): return car.contains(body))
+	if station and station.contains(body):
+		platforms.append(station)
+	
+	return platforms
+
+
 func _handle_reparenting():
 	var remaining_watches = []
 	
 	for body in reparenting_watches:
-		var containing_cars = %Cars.get_children().filter(func(car): return car.contains(body))
+		var containing_platforms = _containing_platforms(body)
 
-		if len(containing_cars) == 1:
-			var new_parent = containing_cars[0]
+		if len(containing_platforms) == 1:
+			var new_parent = containing_platforms[0]
 			if body.get_parent() != new_parent:
 				body.reparent(new_parent)
-		elif len(containing_cars) == 0:
+		elif len(containing_platforms) == 0:
 			pass # Probably leaving the train. Don't track anymore
 		else:
 			remaining_watches.append(body)
@@ -81,9 +92,9 @@ func _handle_leaving_train():
 	var remaining_watches = []
 
 	for body in leaving_train_watches:
-		var containing_cars = %Cars.get_children().filter(func(car): return car.contains(body))
+		var containing_platforms = _containing_platforms(body)	
 		
-		if len(containing_cars) == 0 and body.get_collision_layer_value(6):
+		if len(containing_platforms) == 0 and body.get_collision_layer_value(6):
 			body.reparent(%Ground)
 		else:
 			remaining_watches.append(body)
@@ -92,7 +103,7 @@ func _handle_leaving_train():
 
 
 func _on_body_entered(body, car):
-	print("enter: ", body, car)
+	# print("enter: ", body, car)
 	if body.get_parent() != car and body not in reparenting_watches:
 		reparenting_watches.append(body)
 
