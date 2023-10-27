@@ -53,6 +53,7 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 position = Vector2(1, 0)
 script = ExtResource("2_yimyg")
+fuel_consumption_full_throttle = 10.0
 
 [node name="Track" type="TileMap" parent="Train"]
 z_index = -1
@@ -73,6 +74,7 @@ relative_velocity = null
 position = Vector2(256, 0)
 
 [node name="ControlCrate" parent="Train/Cars/Flatbed1" instance=ExtResource("6_7mcpm")]
+unique_name_in_owner = true
 z_index = 1
 position = Vector2(446, -22)
 
