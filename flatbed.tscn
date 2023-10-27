@@ -76,6 +76,7 @@ size = Vector2(669, 119)
 
 [node name="Flatbed" type="Node2D"]
 script = ExtResource("1_o2xxo")
+relative_velocity = null
 
 [node name="Truck1" type="AnimatedSprite2D" parent="."]
 z_index = -1

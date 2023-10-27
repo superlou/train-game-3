@@ -67,6 +67,7 @@ y_sort_enabled = true
 [node name="Flatbed1" parent="Train/Cars" instance=ExtResource("4_x00ep")]
 y_sort_enabled = true
 position = Vector2(0, 5)
+relative_velocity = null
 
 [node name="Ramp" parent="Train/Cars/Flatbed1" instance=ExtResource("5_hfq0r")]
 position = Vector2(256, 0)
@@ -90,6 +91,7 @@ position = Vector2(115, 73)
 
 [node name="Flatbed2" parent="Train/Cars" instance=ExtResource("4_x00ep")]
 position = Vector2(-685, 5)
+relative_velocity = null
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Train"]
 visible = false
