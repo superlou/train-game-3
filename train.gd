@@ -3,11 +3,8 @@ extends Node2D
 @export var velocity := 500.0
 const ROLLING_FRICTION := 20.0
 @export var decoupled_cars: Array[Platform] = []
+@onready var fuel = get_node("FuelUseComponent")
 
-@export var fuel_max := 5000.0
-@export var fuel = 5000.0
-@export var throttle = 1.0
-@export var fuel_consumption_full_throttle = 1.0
 
 func _ready():
 	for car in %Cars.get_children():
@@ -27,9 +24,7 @@ func _physics_process(delta):
 	for car in %Cars.get_children():
 		car.position.x += car.relative_velocity * delta
 
-	fuel -= fuel_consumption_full_throttle * throttle * delta
-	fuel = clamp(fuel, 0.0, fuel_max)
-	%ControlCrate.fuel_gauge = fuel / fuel_max
+	%ControlCrate.fuel_gauge = fuel.percent_full()
 
-	if fuel == 0.0:
+	if fuel.is_empty():
 		velocity = max(velocity - ROLLING_FRICTION * delta, 0)

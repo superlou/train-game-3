@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3amlqk526e0m"]
+[gd_scene load_steps=14 format=3 uid="uid://c3amlqk526e0m"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_x1ds3"]
 [ext_resource type="Script" path="res://train.gd" id="2_yimyg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://vgvmwl5vqf6v" path="res://player.tscn" id="7_xum60"]
 [ext_resource type="PackedScene" uid="uid://ckil20uyxnrk0" path="res://passenger.tscn" id="8_hxkit"]
 [ext_resource type="PackedScene" uid="uid://bk47ml0jysec7" path="res://drum.tscn" id="9_26yjn"]
+[ext_resource type="PackedScene" uid="uid://ck8t4eueumwol" path="res://fuel_use_component.tscn" id="10_50f34"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e77y4"]
 texture = ExtResource("3_sovol")
@@ -53,7 +54,8 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 position = Vector2(1, 0)
 script = ExtResource("2_yimyg")
-fuel_consumption_full_throttle = 10.0
+
+[node name="FuelUseComponent" parent="Train" instance=ExtResource("10_50f34")]
 
 [node name="Track" type="TileMap" parent="Train"]
 z_index = -1
@@ -68,7 +70,6 @@ y_sort_enabled = true
 [node name="Flatbed1" parent="Train/Cars" instance=ExtResource("4_x00ep")]
 y_sort_enabled = true
 position = Vector2(0, 5)
-relative_velocity = null
 
 [node name="Ramp" parent="Train/Cars/Flatbed1" instance=ExtResource("5_hfq0r")]
 position = Vector2(256, 0)
@@ -93,7 +94,6 @@ position = Vector2(115, 73)
 
 [node name="Flatbed2" parent="Train/Cars" instance=ExtResource("4_x00ep")]
 position = Vector2(-685, 5)
-relative_velocity = null
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Train"]
 visible = false
