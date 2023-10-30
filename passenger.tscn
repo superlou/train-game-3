@@ -1,8 +1,11 @@
-[gd_scene load_steps=54 format=3 uid="uid://ckil20uyxnrk0"]
+[gd_scene load_steps=60 format=3 uid="uid://ckil20uyxnrk0"]
 
 [ext_resource type="Texture2D" uid="uid://li3l3wxpgahn" path="res://assets/no_commercial/Characters_free/Amelia_idle_anim_16x16.png" id="1_hv2k0"]
 [ext_resource type="Script" path="res://passenger.gd" id="1_w5mus"]
 [ext_resource type="Texture2D" uid="uid://68vr3yot316w" path="res://assets/no_commercial/Characters_free/Amelia_16x16.png" id="3_5ogjp"]
+[ext_resource type="PackedScene" uid="uid://cgfhonrlhobss" path="res://components/ai_needs_component.tscn" id="4_qho4v"]
+[ext_resource type="PackedScene" uid="uid://clhdasddhnn8s" path="res://components/need_component.tscn" id="5_oon3o"]
+[ext_resource type="PackedScene" uid="uid://danynh5flo61r" path="res://components/smart_objects_ref_component.tscn" id="6_4ibx2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbxp0"]
 atlas = ExtResource("1_hv2k0")
@@ -386,6 +389,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqq6v"]
 size = Vector2(10, 3)
 
+[sub_resource type="Curve" id="Curve_xcarv"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.327068, 0.105263), 0.0, 0.0, 0, 0, Vector2(0.755639, 0.294737), 0.746667, 0.746667, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_1v7ma"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.721804, 0.0526316), 0.0, 0.0, 0, 0, Vector2(1, 1), 7.93333, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_vae68"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25188, 0.484211), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Passenger" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_w5mus")
@@ -401,3 +416,20 @@ animation = &"walk_up"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_sqq6v")
+
+[node name="AINeedsComponent" parent="." instance=ExtResource("4_qho4v")]
+
+[node name="Hungry" parent="AINeedsComponent" instance=ExtResource("5_oon3o")]
+weight_curve = SubResource("Curve_xcarv")
+
+[node name="Tired" parent="AINeedsComponent" instance=ExtResource("5_oon3o")]
+weight_curve = SubResource("Curve_1v7ma")
+
+[node name="Afraid" parent="AINeedsComponent" instance=ExtResource("5_oon3o")]
+
+[node name="Bored" parent="AINeedsComponent" instance=ExtResource("5_oon3o")]
+
+[node name="Gross" parent="AINeedsComponent" instance=ExtResource("5_oon3o")]
+weight_curve = SubResource("Curve_vae68")
+
+[node name="SmartObjectsRefComponent" parent="." instance=ExtResource("6_4ibx2")]
