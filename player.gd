@@ -2,12 +2,8 @@ extends CharacterBody2D
 
 @export var walk_speed = 100
 @export var sprint_speed = 250
-@export var jump_height = 10
 
-var is_jumping:bool = false
-var jump_vec:Vector2 = Vector2.ZERO
 var held_item = null
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,42 +15,21 @@ func _process(_delta):
 	pass
 
 
-var g = -10
-var jump_t = 0
-var original_z = 0
-var jump_v = 2.5
-
 enum Facing {
 	RIGHT, LEFT, DOWN, UP
 }
 
 var facing: Facing
 
-func _physics_process(delta):
+
+func _physics_process(_delta):
 	var v = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var speed = sprint_speed if Input.is_action_pressed("sprint") else walk_speed
 
-	if Input.is_action_pressed("jump") and not is_jumping:
-		is_jumping = true
-		jump_vec = v
-		jump_t = 0
-		original_z = $Sprite.position.y
-		disable_low_collisions()
-		set_collision_layer_value(6, false)
-		velocity = v * speed
-	
-	if is_jumping:
-		jump_t += delta
-		var jump_offset = round(g * jump_t + jump_v)
-		$Sprite.position.y -= jump_offset
-		$HoldMarkers.position.y -= jump_offset
+	if Input.is_action_pressed("jump"):
+		$JumpC.start_jump(v * speed)
 
-		if $Sprite.position.y >= original_z:
-			$Sprite.position.y = original_z
-			is_jumping = false
-			enable_low_collisions()
-			set_collision_layer_value(6, true)
-	else:	
+	if not $JumpC.is_jumping:
 		if v.x > 0:
 			facing = Facing.RIGHT
 			$Sprite.animation = "right"
@@ -131,10 +106,10 @@ func current_interact_area():
 
 func current_hold_marker():
 	return {
-		Facing.RIGHT: $HoldMarkers/HoldRight,
-		Facing.LEFT: $HoldMarkers/HoldLeft,
-		Facing.UP: $HoldMarkers/HoldUp,
-		Facing.DOWN: $HoldMarkers/HoldDown,
+		Facing.RIGHT: %HoldMarkers/HoldRight,
+		Facing.LEFT: %HoldMarkers/HoldLeft,
+		Facing.UP: %HoldMarkers/HoldUp,
+		Facing.DOWN: %HoldMarkers/HoldDown,
 	}[facing]
 
 

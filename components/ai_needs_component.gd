@@ -13,7 +13,7 @@ func _process(delta):
 	$Afraid.change(delta * 0.0)
 	$Bored.change(delta * 0.01)
 	$Gross.change(delta * 0.01)
-	print_info()
+	# print_info()
 
 
 func print_info():

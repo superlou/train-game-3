@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://vgvmwl5vqf6v"]
+[gd_scene load_steps=12 format=3 uid="uid://vgvmwl5vqf6v"]
 
 [ext_resource type="Texture2D" uid="uid://dmpfra1wx0pfe" path="res://assets/robot.png" id="2_4la08"]
 [ext_resource type="Script" path="res://player.gd" id="2_lvuiu"]
+[ext_resource type="Script" path="res://components/jump_c.gd" id="3_x716i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tc4mu"]
 atlas = ExtResource("2_4la08")
@@ -67,6 +68,22 @@ position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_usufq")
 animation = &"right"
 
+[node name="HoldMarkers" type="Node2D" parent="Sprite"]
+unique_name_in_owner = true
+position = Vector2(0, 9)
+
+[node name="HoldDown" type="Marker2D" parent="Sprite/HoldMarkers"]
+position = Vector2(0, 13)
+
+[node name="HoldRight" type="Marker2D" parent="Sprite/HoldMarkers"]
+position = Vector2(20, -10)
+
+[node name="HoldLeft" type="Marker2D" parent="Sprite/HoldMarkers"]
+position = Vector2(-19, -11)
+
+[node name="HoldUp" type="Marker2D" parent="Sprite/HoldMarkers"]
+position = Vector2(0, -17)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_1g0pm")
@@ -103,16 +120,6 @@ collision_mask = 16
 position = Vector2(0.5, -15.5625)
 shape = SubResource("RectangleShape2D_3moc3")
 
-[node name="HoldMarkers" type="Node2D" parent="."]
-
-[node name="HoldDown" type="Marker2D" parent="HoldMarkers"]
-position = Vector2(0, 13)
-
-[node name="HoldRight" type="Marker2D" parent="HoldMarkers"]
-position = Vector2(20, -10)
-
-[node name="HoldLeft" type="Marker2D" parent="HoldMarkers"]
-position = Vector2(-19, -11)
-
-[node name="HoldUp" type="Marker2D" parent="HoldMarkers"]
-position = Vector2(0, -17)
+[node name="JumpC" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_x716i")
+sprite = NodePath("../Sprite")
