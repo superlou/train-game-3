@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3amlqk526e0m"]
+[gd_scene load_steps=15 format=3 uid="uid://c3amlqk526e0m"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_x1ds3"]
 [ext_resource type="Script" path="res://train.gd" id="2_yimyg"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://vgvmwl5vqf6v" path="res://player.tscn" id="7_xum60"]
 [ext_resource type="PackedScene" uid="uid://ckil20uyxnrk0" path="res://passenger.tscn" id="8_hxkit"]
 [ext_resource type="PackedScene" uid="uid://bk47ml0jysec7" path="res://drum.tscn" id="9_26yjn"]
-[ext_resource type="PackedScene" uid="uid://ck8t4eueumwol" path="res://fuel_use_component.tscn" id="10_50f34"]
+[ext_resource type="PackedScene" uid="uid://ck8t4eueumwol" path="res://components/fuel_use_component.tscn" id="10_50f34"]
+[ext_resource type="PackedScene" uid="uid://beaj6nnvtwfvg" path="res://apple.tscn" id="11_p4of8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e77y4"]
 texture = ExtResource("3_sovol")
@@ -91,6 +92,9 @@ position = Vector2(78, 32)
 [node name="Drum" parent="Train/Cars/Flatbed1" instance=ExtResource("9_26yjn")]
 z_index = 1
 position = Vector2(115, 73)
+
+[node name="Apple" parent="Train/Cars/Flatbed1" instance=ExtResource("11_p4of8")]
+position = Vector2(75, 96)
 
 [node name="Flatbed2" parent="Train/Cars" instance=ExtResource("4_x00ep")]
 position = Vector2(-685, 5)

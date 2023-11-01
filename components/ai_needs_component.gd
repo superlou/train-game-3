@@ -19,7 +19,7 @@ func _process(delta):
 func print_info():
 	print("---")
 	for need in get_children():
-		print(need.name, ": ", need.value)
+		print(need.name, ": ", "%.2f" % need.value)
 
 	print("Eat carefully: ", calc_utility({
 		"Hungry": -0.1,

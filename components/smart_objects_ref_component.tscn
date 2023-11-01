@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://danynh5flo61r"]
+[gd_scene load_steps=2 format=3 uid="uid://danynh5flo61r"]
+
+[ext_resource type="Script" path="res://components/smart_objects_ref_component.gd" id="1_b5j73"]
 
 [node name="SmartObjectsRefComponent" type="Node2D"]
+script = ExtResource("1_b5j73")
