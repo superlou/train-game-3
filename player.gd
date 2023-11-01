@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var walk_speed = 100
 @export var sprint_speed = 250
 
-var held_item = null
 @onready var Facing = $FaceDirectionC.Facing
 
 
@@ -47,13 +46,10 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("interact"):
 		interact()
 
-	if held_item:
-		held_item.global_position = current_hold_marker().global_position
-
 
 func interact():
-	if held_item:
-		drop_held_item()
+	if $CarryC.is_holding():
+		$CarryC.drop()
 		return
 
 	var interact_area = current_interact_area()
@@ -68,25 +64,8 @@ func interact():
 
 func interact_with(item):
 	if item.is_in_group("grabbable"):
-		pick_up(item)
+		$CarryC.pick_up(item)
 	
-
-func pick_up(item):
-	held_item = item
-	item.set_collision_layer_value(6, false)
-	item.reparent(self)
-
-
-func drop_held_item():
-#	held_item.global_position = current_hold_marker().global_position
-	var pos = held_item.global_position
-	remove_child(held_item)
-	get_parent().add_child(held_item)
-	held_item.global_position = pos
-	held_item.set_collision_layer_value(6, true)
-	held_item.rotation = 0	
-	held_item = null
-
 
 func current_interact_area():
 	return {
@@ -94,15 +73,6 @@ func current_interact_area():
 		Facing.LEFT: $InteractLeft,
 		Facing.UP: $InteractUp,
 		Facing.DOWN: $InteractDown,
-	}[$FaceDirectionC.facing]
-
-
-func current_hold_marker():
-	return {
-		Facing.RIGHT: %HoldMarkers/HoldRight,
-		Facing.LEFT: %HoldMarkers/HoldLeft,
-		Facing.UP: %HoldMarkers/HoldUp,
-		Facing.DOWN: %HoldMarkers/HoldDown,
 	}[$FaceDirectionC.facing]
 
 

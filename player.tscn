@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://vgvmwl5vqf6v"]
+[gd_scene load_steps=14 format=3 uid="uid://vgvmwl5vqf6v"]
 
 [ext_resource type="Texture2D" uid="uid://dmpfra1wx0pfe" path="res://assets/robot.png" id="2_4la08"]
 [ext_resource type="Script" path="res://player.gd" id="2_lvuiu"]
 [ext_resource type="Script" path="res://components/jump_c.gd" id="3_x716i"]
 [ext_resource type="Script" path="res://components/face_direction_c.gd" id="4_iyyax"]
+[ext_resource type="Script" path="res://components/CarryC.gd" id="5_pxh42"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tc4mu"]
 atlas = ExtResource("2_4la08")
@@ -70,7 +71,6 @@ sprite_frames = SubResource("SpriteFrames_usufq")
 animation = &"right"
 
 [node name="HoldMarkers" type="Node2D" parent="Sprite"]
-unique_name_in_owner = true
 position = Vector2(0, 9)
 
 [node name="HoldDown" type="Marker2D" parent="Sprite/HoldMarkers"]
@@ -127,3 +127,11 @@ sprite = NodePath("../Sprite")
 
 [node name="FaceDirectionC" type="Node" parent="."]
 script = ExtResource("4_iyyax")
+
+[node name="CarryC" type="Node2D" parent="." node_paths=PackedStringArray("hold_left_pos", "hold_right_pos", "hold_up_pos", "hold_down_pos", "face_direction_c")]
+script = ExtResource("5_pxh42")
+hold_left_pos = NodePath("../Sprite/HoldMarkers/HoldLeft")
+hold_right_pos = NodePath("../Sprite/HoldMarkers/HoldRight")
+hold_up_pos = NodePath("../Sprite/HoldMarkers/HoldUp")
+hold_down_pos = NodePath("../Sprite/HoldMarkers/HoldDown")
+face_direction_c = NodePath("../FaceDirectionC")
