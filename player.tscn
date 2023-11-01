@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://vgvmwl5vqf6v"]
+[gd_scene load_steps=13 format=3 uid="uid://vgvmwl5vqf6v"]
 
 [ext_resource type="Texture2D" uid="uid://dmpfra1wx0pfe" path="res://assets/robot.png" id="2_4la08"]
 [ext_resource type="Script" path="res://player.gd" id="2_lvuiu"]
 [ext_resource type="Script" path="res://components/jump_c.gd" id="3_x716i"]
+[ext_resource type="Script" path="res://components/face_direction_c.gd" id="4_iyyax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tc4mu"]
 atlas = ExtResource("2_4la08")
@@ -123,3 +124,6 @@ shape = SubResource("RectangleShape2D_3moc3")
 [node name="JumpC" type="Node" parent="." node_paths=PackedStringArray("sprite")]
 script = ExtResource("3_x716i")
 sprite = NodePath("../Sprite")
+
+[node name="FaceDirectionC" type="Node" parent="."]
+script = ExtResource("4_iyyax")

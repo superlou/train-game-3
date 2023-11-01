@@ -4,6 +4,7 @@ var movement_speed: float = 30.0
 @export var movement_target_position: Vector2 = Vector2(400, 75)
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var Facing = $FaceDirectionC.Facing
 
 
 func _ready():
@@ -35,13 +36,12 @@ func _physics_process(_delta):
 		velocity = new_velocity
 		move_and_slide()
 
-		var angle = velocity.angle()
-		if angle > deg_to_rad(-70) and angle <= deg_to_rad(70):
-			$Sprite.animation = "walk_right"
-		elif angle > deg_to_rad(70) and angle <= deg_to_rad(110):
-			$Sprite.animation = "walk_down"
-		elif angle > deg_to_rad(110) or angle < deg_to_rad(-110):
-			$Sprite.animation = "walk_left"
-		elif angle > deg_to_rad(-110) and angle <= deg_to_rad(-70):
-			$Sprite.animation = "walk_up"
-
+		match $FaceDirectionC.facing:
+			Facing.RIGHT:
+				$Sprite.animation = "walk_right"
+			Facing.LEFT:
+				$Sprite.animation = "walk_left"
+			Facing.UP:
+				$Sprite.animation = "walk_up"
+			Facing.DOWN:
+				$Sprite.animation = "walk_down"

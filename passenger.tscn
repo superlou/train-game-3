@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ckil20uyxnrk0"]
+[gd_scene load_steps=61 format=3 uid="uid://ckil20uyxnrk0"]
 
 [ext_resource type="Texture2D" uid="uid://li3l3wxpgahn" path="res://assets/no_commercial/Characters_free/Amelia_idle_anim_16x16.png" id="1_hv2k0"]
 [ext_resource type="Script" path="res://passenger.gd" id="1_w5mus"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cgfhonrlhobss" path="res://components/ai_needs_component.tscn" id="4_qho4v"]
 [ext_resource type="PackedScene" uid="uid://clhdasddhnn8s" path="res://components/need_component.tscn" id="5_oon3o"]
 [ext_resource type="PackedScene" uid="uid://danynh5flo61r" path="res://components/smart_objects_ref_component.tscn" id="6_4ibx2"]
+[ext_resource type="Script" path="res://components/face_direction_c.gd" id="7_tuyao"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbxp0"]
 atlas = ExtResource("1_hv2k0")
@@ -433,3 +434,6 @@ weight_curve = SubResource("Curve_1v7ma")
 weight_curve = SubResource("Curve_vae68")
 
 [node name="SmartObjectsRefComponent" parent="." instance=ExtResource("6_4ibx2")]
+
+[node name="FaceDirectionC" type="Node" parent="."]
+script = ExtResource("7_tuyao")

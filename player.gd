@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var sprint_speed = 250
 
 var held_item = null
+@onready var Facing = $FaceDirectionC.Facing
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,13 +17,6 @@ func _process(_delta):
 	pass
 
 
-enum Facing {
-	RIGHT, LEFT, DOWN, UP
-}
-
-var facing: Facing
-
-
 func _physics_process(_delta):
 	var v = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var speed = sprint_speed if Input.is_action_pressed("sprint") else walk_speed
@@ -30,24 +25,22 @@ func _physics_process(_delta):
 		$JumpC.start_jump(v * speed)
 
 	if not $JumpC.is_jumping:
-		if v.x > 0:
-			facing = Facing.RIGHT
-			$Sprite.animation = "right"
-			$Sprite.flip_h = false
-		elif v.x < 0:
-			facing = Facing.LEFT
-			$Sprite.animation = "right"
-			$Sprite.flip_h = true
-		elif v.y > 0:
-			facing = Facing.DOWN
-			$Sprite.animation = "down"
-			$Sprite.flip_h = false
-		elif v.y < 0:
-			facing = Facing.UP
-			$Sprite.animation = "up"
-			$Sprite.flip_h = false
-
 		velocity = v * speed
+
+		match $FaceDirectionC.facing:
+			Facing.RIGHT:
+				$Sprite.animation = "right"
+				$Sprite.flip_h = false
+			Facing.LEFT:
+				$Sprite.animation = "right"
+				$Sprite.flip_h = true
+			Facing.UP:
+				$Sprite.animation = "up"
+				$Sprite.flip_h = false
+			Facing.DOWN:
+				$Sprite.animation = "down"
+				$Sprite.flip_h = false
+
 
 	move_and_slide()
 
@@ -101,7 +94,7 @@ func current_interact_area():
 		Facing.LEFT: $InteractLeft,
 		Facing.UP: $InteractUp,
 		Facing.DOWN: $InteractDown,
-	}[facing]
+	}[$FaceDirectionC.facing]
 
 
 func current_hold_marker():
@@ -110,7 +103,7 @@ func current_hold_marker():
 		Facing.LEFT: %HoldMarkers/HoldLeft,
 		Facing.UP: %HoldMarkers/HoldUp,
 		Facing.DOWN: %HoldMarkers/HoldDown,
-	}[facing]
+	}[$FaceDirectionC.facing]
 
 
 func enable_low_collisions():
