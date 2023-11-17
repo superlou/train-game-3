@@ -55,7 +55,9 @@ func _physics_process(delta):
 		station.position.x -= %Train.velocity * delta
 
 	for child in %Ground.get_children():
+		# todo This doesn't really work because of physics!
 		child.position.x -= %Train.velocity * delta
+		print(%Train.velocity * delta)
 
 	var dist_from_broadcast := player.global_position.distance_to(%Broadcast.global_position)
 	if dist_from_broadcast > 1500:
