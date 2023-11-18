@@ -12,7 +12,7 @@ region = Rect2(32, 0, 32, 32)
 radius = 4.0
 height = 18.0
 
-[node name="Apple" type="RigidBody2D" groups=["grabbable"]]
+[node name="Apple" type="RigidBody2D" groups=["grabbable", "smart-object"]]
 y_sort_enabled = true
 collision_layer = 16
 collision_mask = 0
@@ -26,7 +26,7 @@ texture = SubResource("AtlasTexture_nemkl")
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_te5u4")
 
-[node name="SmartObjectComponent" parent="." instance=ExtResource("2_fhf0j")]
+[node name="BehaviorSet" parent="." instance=ExtResource("2_fhf0j")]
 
-[node name="EatItemBehavior" type="Node2D" parent="SmartObjectComponent"]
+[node name="EatItemBehavior" type="Node2D" parent="BehaviorSet"]
 script = ExtResource("3_a47ta")

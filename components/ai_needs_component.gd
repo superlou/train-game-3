@@ -21,25 +21,25 @@ func print_info():
 	for need in get_children():
 		print(need.name, ": ", "%.2f" % need.value)
 
-	print("Eat carefully: ", calc_utility({
+	print("Eat carefully: ", utility({
 		"Hungry": -0.1,
 	}))
 
-	print("Eat sloppy: ", calc_utility({
+	print("Eat sloppy: ", utility({
 		"Hungry": -0.2,
 		"Gross": 0.05
 	}))
 
-	print("Nap: ", calc_utility({
+	print("Nap: ", utility({
 		"Tired": -0.3
 	}))
 
-	print("Sleep: ", calc_utility({
+	print("Sleep: ", utility({
 		"Tired": -1.0
 	}))
 
 
-func calc_utility(effects: Dictionary):
+func utility(effects: Dictionary):
 	var utility := 0.0
 
 	for need_name in effects:

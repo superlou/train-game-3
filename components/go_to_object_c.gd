@@ -11,6 +11,7 @@ var movement_speed: float = 30.0
 @onready var actor = get_parent()
 
 var Facing = FaceDirectionC.Facing
+var moving := false
 
 
 func _ready():
@@ -29,9 +30,11 @@ func _physics_process(_delta):
 		navigation_agent.target_position = object.global_position
 
 	if navigation_agent.is_navigation_finished():
+		moving = false
 		if sprite.animation.begins_with("walk"):
 			sprite.animation = sprite.animation.replace("walk", "idle")
 	else:
+		moving = true
 		var current_pos: Vector2 = global_position
 		var next_pos: Vector2 = navigation_agent.get_next_path_position()
 

@@ -17,9 +17,9 @@ func get_effects(_actor):
 
 
 func get_actions(_actor):
-	var smart_object = null # todo. The parent of the behavior?
+	var smart_object = get_parent().get_parent()
 	return [
-		["go-beside", smart_object],
+		["go-to-object", smart_object],
 		["pick-up", smart_object],
 		["eat", smart_object]
 	]
