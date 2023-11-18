@@ -86,6 +86,7 @@ z_index = 1
 position = Vector2(43, 34)
 
 [node name="Passenger" parent="Train/Cars/Flatbed1" instance=ExtResource("8_hxkit")]
+unique_name_in_owner = true
 z_index = 1
 position = Vector2(78, 32)
 
@@ -94,6 +95,7 @@ z_index = 1
 position = Vector2(115, 73)
 
 [node name="Apple" parent="Train/Cars/Flatbed1" instance=ExtResource("11_p4of8")]
+unique_name_in_owner = true
 position = Vector2(75, 96)
 
 [node name="Flatbed2" parent="Train/Cars" instance=ExtResource("4_x00ep")]

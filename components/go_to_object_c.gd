@@ -14,39 +14,38 @@ var Facing = FaceDirectionC.Facing
 
 
 func _ready():
-    call_deferred("setup_target")
+	call_deferred("setup_target")
 
 
 func setup_target():
-    await get_tree().physics_frame
-    
-
+	await get_tree().physics_frame
+	
 
 func _physics_process(_delta):
-    if object == null:
-        return
+	if object == null:
+		return
 
-    if navigation_agent.target_position != object.global_position:
-        navigation_agent.target_position = object.global_position
+	if navigation_agent.target_position != object.global_position:
+		navigation_agent.target_position = object.global_position
 
-    if navigation_agent.is_navigation_finished():
-        if sprite.animation.begins_with("walk"):
-            sprite.animation = sprite.animation.replace("walk", "idle")
-        else:
-            var current_pos: Vector2 = global_position
-            var next_pos: Vector2 = navigation_agent.get_next_path_position()
+	if navigation_agent.is_navigation_finished():
+		if sprite.animation.begins_with("walk"):
+			sprite.animation = sprite.animation.replace("walk", "idle")
+	else:
+		var current_pos: Vector2 = global_position
+		var next_pos: Vector2 = navigation_agent.get_next_path_position()
 
-            var new_velocity: Vector2 = next_pos - current_pos
-            new_velocity = new_velocity.normalized() * movement_speed
-            actor.velocity = new_velocity
-            actor.move_and_slide()
+		var new_velocity: Vector2 = next_pos - current_pos
+		new_velocity = new_velocity.normalized() * movement_speed
+		actor.velocity = new_velocity
+		actor.move_and_slide()
 
-            match face_direction_c.facing:
-                Facing.RIGHT:
-                    $Sprite.animation = "walk_right"
-                Facing.LEFT:
-                    $Sprite.animation = "walk_left"
-                Facing.UP:
-                    $Sprite.animation = "walk_up"
-                Facing.DOWN:
-                    $Sprite.animation = "walk_down"            
+		match face_direction_c.facing:
+			Facing.RIGHT:
+				sprite.animation = "walk_right"
+			Facing.LEFT:
+				sprite.animation = "walk_left"
+			Facing.UP:
+				sprite.animation = "walk_up"
+			Facing.DOWN:
+				sprite.animation = "walk_down"            

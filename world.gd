@@ -19,6 +19,7 @@ var travel_state: TravelType = TravelType.TRAVELING
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = %Player
+	%Passenger.get_node("GoToObjectC").object = %Apple
 
 	for car in %Cars.get_children():
 		car.connect("platform_entered", func(b): _on_body_entered(b, car))
