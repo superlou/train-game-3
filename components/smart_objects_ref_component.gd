@@ -9,10 +9,5 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func get_all():
-	return get_tree().get_nodes_in_group("smart-object")
+	return get_tree().get_nodes_in_group("behavior-set")

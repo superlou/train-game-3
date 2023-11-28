@@ -25,10 +25,10 @@ func _process(_delta):
 
 
 func _find_new_behavior():
-	var smart_objects = $SmartObjectsRefComponent.get_all()
+	var smart_object_behavior_sets = $SmartObjectsRefComponent.get_all()
 	var behaviors = []
-	for obj in smart_objects:
-		for behavior in obj.get_node("BehaviorSet").all():
+	for behavior_set in smart_object_behavior_sets:
+		for behavior in behavior_set.all():
 			behaviors.append(behavior)
 
 	var ai_needs := $AINeedsComponent
