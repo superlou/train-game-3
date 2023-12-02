@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://ckil20uyxnrk0"]
+[gd_scene load_steps=61 format=3 uid="uid://ckil20uyxnrk0"]
 
 [ext_resource type="Texture2D" uid="uid://li3l3wxpgahn" path="res://assets/no_commercial/Characters_free/Amelia_idle_anim_16x16.png" id="1_hv2k0"]
 [ext_resource type="Script" path="res://passenger.gd" id="1_w5mus"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://clhdasddhnn8s" path="res://components/need_component.tscn" id="5_oon3o"]
 [ext_resource type="PackedScene" uid="uid://danynh5flo61r" path="res://components/smart_objects_ref_component.tscn" id="6_4ibx2"]
 [ext_resource type="Script" path="res://components/face_direction_c.gd" id="7_tuyao"]
-[ext_resource type="Script" path="res://components/go_to_object_c.gd" id="8_42npr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbxp0"]
 atlas = ExtResource("1_hv2k0")
@@ -441,9 +440,3 @@ position = Vector2(1, 0)
 
 [node name="FaceDirectionC" type="Node" parent="."]
 script = ExtResource("7_tuyao")
-
-[node name="GoToObjectC" type="Node2D" parent="." node_paths=PackedStringArray("face_direction_c", "navigation_agent", "sprite")]
-script = ExtResource("8_42npr")
-face_direction_c = NodePath("../FaceDirectionC")
-navigation_agent = NodePath("../NavigationAgent2D")
-sprite = NodePath("../Sprite")

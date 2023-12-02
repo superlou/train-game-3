@@ -41,16 +41,21 @@ func _find_new_behavior():
 
 
 func _do_behavior():
-	if len(action_queue) == 0:
-		active_behavior = null
-		active_action = null
+	# If there's an active action, keep letting it run
+	if active_action != null:
 		return
 
-	active_action = action_queue[0]
-	match active_action:
-		["go-to-object", var obj]:
-			$GoToObjectC.object = obj
-			if not $GoToObjectC.moving:
-				# THIS DOESN"T WORK BECAUSE IMMEDIATELY NOT MOVING
-				action_queue.pop_front()
+	# Load the next action
+	active_action = action_queue.pop_front()
 
+	# Stop if there are no more actions
+	if active_action == null:
+		active_behavior = null
+		return
+
+	active_action.connect("finished", _on_action_finished)
+	add_child(active_action)
+
+
+func _on_action_finished():
+	active_action.queue_free()
